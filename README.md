@@ -1,65 +1,61 @@
-# statusbartext README
+# StatusBarText Extension for VSCode
 
-This is the README for your extension "statusbartext". After writing up a brief description, we recommend including the following sections.
+A simple Visual Studio Code extension that displays custom text in the status bar based on your configuration.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Customizable Text**: Configure the text (including icons) displayed in the status bar.
+- **Activation Control**: Easily enable or disable the status bar item via settings.
 
-For example if there is an image subfolder under your extension project workspace:
+## Installation
 
-\!\[feature X\]\(images/feature-x.png\)
+1. Open Visual Studio Code.
+2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window.
+3. Search for `StatusBarText`.
+4. Click `Install` to install the extension.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Configuration
 
-## Requirements
+You can configure the extension by adding the following settings to your `.vscode/settings.json` file in your project (local configuration) or to your global VSCode settings:
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+```json
+{
+    "statusbartext": {
+        "active": true,
+        "text": "🚀 Custom Text"
+    }
+}
+```
 
-## Extension Settings
+### Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- **`statusbartext.active`**: (Boolean) Determines whether the status bar item is visible. Set to `true` to show the status bar item, or `false` to hide it.
+- **`statusbartext.text`**: (String) The text to display in the status bar. You can include emojis or any text you want directly in this property.
 
-For example:
+## Example
 
-This extension contributes the following settings:
+To show "🚀 Custom Text" in the status bar, use the following configuration:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+```json
+{
+    "statusbartext": {
+        "active": true,
+        "text": "🚀 Custom Text"
+    }
+}
+```
 
-## Known Issues
+If you want to hide the status bar item, set `active` to `false`:
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+```json
+{
+    "statusbartext": {
+        "active": false,
+        "text": "🚀 Custom Text"
+    }
+}
+```
 
-## Release Notes
+## License
 
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
