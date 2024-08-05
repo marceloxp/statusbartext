@@ -2,6 +2,8 @@
 
 A simple Visual Studio Code extension that displays custom text in the status bar based on your configuration.
 
+![preview](https://github.com/marceloxp/statusbartext/raw/main/images/preview.png)
+
 ## Features
 
 - **Customizable Text**: Configure the text (including icons) displayed in the status bar.
@@ -22,7 +24,7 @@ You can configure the extension by adding the following settings to your `.vscod
 {
     "statusbartext": {
         "active": true,
-        "text": "🚀 Custom Text"
+        "text": " 🚀 Custom Text "
     }
 }
 ```

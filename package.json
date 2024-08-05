@@ -1,14 +1,23 @@
 {
   "name": "statusbartext",
-  "displayName": "statusbartext",
+  "displayName": "Statusbar Text",
   "description": "A custom Status Bar text to your vscode",
+  "publisher": "marceloxp",
+  "icon": "images/icon.png",
+  "license": "SEE LICENSE IN LICENSE",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.92.0"
   },
   "categories": [
-    "Other"
+    "Debuggers",
+    "Visualization"
   ],
+  "galleryBanner": {
+    "color": "#000080",
+    "theme": "dark"
+  },
+  "pricing": "Free",
   "activationEvents": [
     "onStartupFinished",
     "onDidChangeConfiguration"
@@ -30,5 +39,13 @@
     "@vscode/test-electron": "^2.4.0",
     "eslint": "^8.57.0",
     "typescript": "^5.4.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marceloxp/statusbartext.git"
+  },
+  "bugs": {
+    "url": "https://github.com/marceloxp/statusbartext/issues"
+  },
+  "homepage": "https://github.com/marceloxp/statusbartext#readme"
 }
