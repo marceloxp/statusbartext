@@ -8,12 +8,16 @@ function activate(context) {
         const statusConfig = vscode.workspace.getConfiguration().get('statusbartext');
         
         // Obter texto e status ativo diretamente da configuração
-        const text = statusConfig.text || '';
-        const active = statusConfig.active || false;
-
-        statusBarItem.text = text;
-        if (active) {
-            statusBarItem.show();
+        if (statusConfig && statusConfig.text && statusConfig.active) {
+            const text = statusConfig.text || '';
+            const active = statusConfig.active || false;
+    
+            statusBarItem.text = text;
+            if (active) {
+                statusBarItem.show();
+            } else {
+                statusBarItem.hide();
+            }
         } else {
             statusBarItem.hide();
         }
