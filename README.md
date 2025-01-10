@@ -2,7 +2,7 @@
 
 A simple Visual Studio Code extension that displays custom text in the status bar based on your configuration.
 
-![preview](https://github.com/marceloxp/statusbartext/raw/main/images/preview.png)
+![preview](https://raw.githubusercontent.com/marceloxp/statusbartext/refs/heads/master/images/preview.png)
 
 ## Features
 
