@@ -26,7 +26,7 @@ You can configure the extension by adding the following settings to your `.vscod
 {
     "statusbartext": {
         "active": true,
-        "text": " 🚀 Custom Text "
+        "text": "🚀 Custom Text"
     }
 }
 ```
