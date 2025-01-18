@@ -1,51 +1,102 @@
 {
-  "name": "statusbartext",
-  "displayName": "Statusbar Text",
-  "description": "A custom Status Bar text to your vscode",
-  "publisher": "marceloxp",
-  "icon": "images/icon.png",
-  "license": "SEE LICENSE IN LICENSE",
-  "version": "0.0.2",
-  "engines": {
-    "vscode": "^1.92.0"
-  },
-  "categories": [
-    "Debuggers",
-    "Visualization"
-  ],
-  "galleryBanner": {
-    "color": "#000080",
-    "theme": "dark"
-  },
-  "pricing": "Free",
-  "activationEvents": [
-    "onStartupFinished",
-    "onDidChangeConfiguration"
-  ],
-  "main": "./extension.js",
-  "contributes": {
-    "commands": []
-  },
-  "scripts": {
-    "lint": "eslint .",
-    "pretest": "npm run lint",
-    "test": "vscode-test"
-  },
-  "devDependencies": {
-    "@types/mocha": "^10.0.7",
-    "@types/node": "20.x",
-    "@types/vscode": "^1.92.0",
-    "@vscode/test-cli": "^0.0.9",
-    "@vscode/test-electron": "^2.4.0",
-    "eslint": "^8.57.0",
-    "typescript": "^5.4.5"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/marceloxp/statusbartext.git"
-  },
-  "bugs": {
-    "url": "https://github.com/marceloxp/statusbartext/issues"
-  },
-  "homepage": "https://github.com/marceloxp/statusbartext#readme"
+    "name": "statusbartext",
+    "displayName": "Statusbar Text",
+    "description": "A custom Status Bar text to your vscode",
+    "publisher": "marceloxp",
+    "icon": "images/icon.png",
+    "license": "SEE LICENSE IN LICENSE",
+    "version": "0.0.3",
+    "engines": {
+        "vscode": "^1.92.0"
+    },
+    "categories": [
+        "Debuggers",
+        "Visualization"
+    ],
+    "galleryBanner": {
+        "color": "#000080",
+        "theme": "dark"
+    },
+    "pricing": "Free",
+    "activationEvents": [
+        "onStartupFinished",
+        "onDidChangeConfiguration"
+    ],
+    "main": "./extension.js",
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "Status Bar Text Settings",
+            "properties": {
+                "statusbartext": {
+                    "type": "object",
+                    "default": {
+                        "active": false,
+                        "text": "🚀 Custom Text"
+                    },
+                    "description": "Setting to control status bar item text and visibility.",
+                    "properties": {
+                        "active": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "Determines whether the status bar text is active."
+                        },
+                        "text": {
+                            "type": "string",
+                            "default": "🚀 Custom Text",
+                            "description": "Text displayed in the status bar."
+                        }
+                    }
+                }
+            }
+        },
+        "commands": [
+            {
+                "command": "statusbartext.setTextGlobal",
+                "title": "StatusBarText: Set Text (Global)"
+            },
+            {
+                "command": "statusbartext.setTextWorkspace",
+                "title": "StatusBarText: Set Text (Workspace)"
+            },
+            {
+                "command": "statusbartext.activateGlobal",
+                "title": "StatusBarText: Activate (Global)"
+            },
+            {
+                "command": "statusbartext.deactivateGlobal",
+                "title": "StatusBarText: Deactivate (Global)"
+            },
+            {
+                "command": "statusbartext.activateWorkspace",
+                "title": "StatusBarText: Activate (Workspace)"
+            },
+            {
+                "command": "statusbartext.deactivateWorkspace",
+                "title": "StatusBarText: Deactivate (Workspace)"
+            }
+        ]
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "pretest": "npm run lint",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^10.0.7",
+        "@types/node": "20.x",
+        "@types/vscode": "^1.92.0",
+        "@vscode/test-cli": "^0.0.9",
+        "@vscode/test-electron": "^2.4.0",
+        "eslint": "^8.57.0",
+        "typescript": "^5.4.5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/marceloxp/statusbartext.git"
+    },
+    "bugs": {
+        "url": "https://github.com/marceloxp/statusbartext/issues"
+    },
+    "homepage": "https://github.com/marceloxp/statusbartext#readme"
 }
