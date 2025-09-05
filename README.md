@@ -9,7 +9,7 @@ A simple Visual Studio Code extension that displays custom text in the status ba
 - **Customizable Text**: Configure the text (including icons) displayed in the status bar.
 - **Activation Control**: Easily enable or disable the status bar item via settings or commands.
 - **Global and Workspace Scopes**: Configure the status bar text globally or for specific workspaces.
-- **Interactive Text Configuration**: Use commands to set the status bar text interactively.
+- **Interactive Text Configuration**: Use commands or click the status bar item to set the text interactively, with the current text pre-filled for easy editing.
 
 ## Installation
 
@@ -44,10 +44,11 @@ The extension provides the following commands to manage the status bar text inte
 - **`StatusBarText: Deactivate (Global)`**: Deactivates the status bar text globally.
 - **`StatusBarText: Activate (Workspace)`**: Activates the status bar text for the current workspace.
 - **`StatusBarText: Deactivate (Workspace)`**: Deactivates the status bar text for the current workspace.
-- **`StatusBarText: Set Text (Global)`**: Opens an input box to set the status bar text globally.
-- **`StatusBarText: Set Text (Workspace)`**: Opens an input box to set the status bar text for the current workspace.
+- **`StatusBarText: Set Text (Global)`**: Opens an input box to set the status bar text globally, pre-filled with the current text.
+- **`StatusBarText: Set Text (Workspace)`**: Opens an input box to set the status bar text for the current workspace, pre-filled with the current text.
+- **Clicking the Status Bar Item**: Click the status bar text to open a dialog where you can choose the scope (Global or Workspace) and edit the current text, which is pre-filled in the input box.
 
-To use these commands, open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on macOS) and type the command name.
+To use the commands, open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on macOS) and type the command name. Alternatively, click the status bar item to set the text directly.
 
 ## Example
 
@@ -73,7 +74,7 @@ If you want to hide the status bar item, set `active` to `false`:
 }
 ```
 
-Alternatively, you can use the commands to interactively set the text and activation status.
+Alternatively, you can use the commands or click the status bar item to interactively set the text and activation status.
 
 ## License
 

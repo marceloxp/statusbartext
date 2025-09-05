@@ -5,7 +5,7 @@
     "publisher": "marceloxp",
     "icon": "images/icon.png",
     "license": "SEE LICENSE IN LICENSE",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "engines": {
         "vscode": "^1.92.0"
     },
@@ -51,6 +51,10 @@
             }
         },
         "commands": [
+            {
+                "command": "statusbartext.setTextOnClick",
+                "title": "StatusBarText: Set Text (On Click)"
+            },
             {
                 "command": "statusbartext.setTextGlobal",
                 "title": "StatusBarText: Set Text (Global)"

@@ -7,6 +7,10 @@ const vscode = require('vscode');
  */
 function activate(context) {
     let statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+    // Associar um comando ao clique no statusBarItem
+    statusBarItem.command = 'statusbartext.setTextOnClick';
+    // Adicionar tooltip para indicar que o item é clicável
+    statusBarItem.tooltip = 'Click to change the status bar text';
 
     /**
      * Updates the status bar based on the current configuration.
@@ -72,6 +76,36 @@ function activate(context) {
         }
     });
 
+    // Comando para o clique no statusBarItem
+    const setTextOnClickCommand = vscode.commands.registerCommand('statusbartext.setTextOnClick', async () => {
+        // Obter a configuração atual
+        const statusConfig = vscode.workspace.getConfiguration().get('statusbartext');
+        // Determinar o texto atual ou usar o padrão
+        const currentText = (statusConfig && typeof statusConfig === 'object' && statusConfig.text) 
+            ? statusConfig.text 
+            : '🚀 Custom Text';
+
+        // Perguntar ao usuário qual escopo deseja usar
+        const scope = await vscode.window.showQuickPick(
+            [
+                { label: 'Workspace', description: 'Apply to this workspace only', value: vscode.ConfigurationTarget.Workspace },
+                { label: 'Global', description: 'Apply to all workspaces', value: vscode.ConfigurationTarget.Global },
+            ],
+            { placeHolder: 'Select the scope for the status bar text' }
+        );
+
+        if (scope) {
+            const text = await vscode.window.showInputBox({
+                placeHolder: `Enter text for status bar (${scope.label})`,
+                prompt: `Enter the text that will be displayed in the ${scope.label.toLowerCase()} scope.`,
+                value: currentText // Define o texto atual como valor padrão
+            });
+            if (text !== undefined) {
+                updateStatusBarConfig('text', text, scope.value);
+            }
+        }
+    });
+
     // Command to activate the status bar text globally
     const activateGlobalCommand = vscode.commands.registerCommand('statusbartext.activateGlobal', () => {
         updateStatusBarConfig('active', true, vscode.ConfigurationTarget.Global);
@@ -94,9 +128,14 @@ function activate(context) {
 
     // Command to set the status bar text globally
     const setTextGlobalCommand = vscode.commands.registerCommand('statusbartext.setTextGlobal', async () => {
+        const statusConfig = vscode.workspace.getConfiguration().get('statusbartext');
+        const currentText = (statusConfig && typeof statusConfig === 'object' && statusConfig.text) 
+            ? statusConfig.text 
+            : '🚀 Custom Text';
         const text = await vscode.window.showInputBox({
             placeHolder: 'Enter text for status bar (Global)',
             prompt: 'Enter the text that will be displayed globally.',
+            value: currentText
         });
         if (text !== undefined) {
             updateStatusBarConfig('text', text, vscode.ConfigurationTarget.Global);
@@ -105,9 +144,14 @@ function activate(context) {
 
     // Command to set the status bar text in the current workspace
     const setTextWorkspaceCommand = vscode.commands.registerCommand('statusbartext.setTextWorkspace', async () => {
+        const statusConfig = vscode.workspace.getConfiguration().get('statusbartext');
+        const currentText = (statusConfig && typeof statusConfig === 'object' && statusConfig.text) 
+            ? statusConfig.text 
+            : '🚀 Custom Text';
         const text = await vscode.window.showInputBox({
             placeHolder: 'Enter text for the status bar (Workspace)',
             prompt: 'Enter the text that will be displayed in this workspace.',
+            value: currentText
         });
         if (text !== undefined) {
             updateStatusBarConfig('text', text, vscode.ConfigurationTarget.Workspace);
@@ -117,6 +161,7 @@ function activate(context) {
     // Register all commands and the status bar item with the extension context
     context.subscriptions.push(
         statusBarItem,
+        setTextOnClickCommand,
         activateGlobalCommand,
         deactivateGlobalCommand,
         activateWorkspaceCommand,
